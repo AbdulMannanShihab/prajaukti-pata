@@ -110,25 +110,7 @@ const banglaChannels = [
     subs: 'সব লেভেল',
     desc: 'বিগিনারদের জন্য বাংলায় সবচেয়ে সহজ ব্যাখ্যায় প্রোগ্রামিং শেখার চ্যানেল।',
     topics: ['Python', 'C', 'Java', 'Web'],
-  },
-  {
-    name: 'Programmer Sohel',
-    url: 'https://www.youtube.com/@ProgrammerSohel',
-    abbr: 'PS',
-    bg: 'bg-purple-600',
-    subs: 'ইন্টারমিডিয়েট',
-    desc: 'ওয়েব ডেভেলপমেন্ট ও ফ্রিল্যান্সিং গাইড নিয়ে মানসম্মত বাংলা কন্টেন্ট।',
-    topics: ['React', 'Next.js', 'Freelancing'],
-  },
-  {
-    name: 'WebDevs BD',
-    url: 'https://www.youtube.com/@WebDevsBD',
-    abbr: 'WD',
-    bg: 'bg-teal-600',
-    subs: 'প্র্যাক্টিক্যাল প্রোজেক্ট',
-    desc: 'প্র্যাক্টিক্যাল ওয়েব ডেভেলপমেন্ট প্রজেক্ট ও টিউটোরিয়াল বাংলায়।',
-    topics: ['HTML', 'CSS', 'Bootstrap', 'JS'],
-  },
+  }
 ]
 
 const englishChannels = [
