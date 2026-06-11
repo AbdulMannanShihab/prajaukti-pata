@@ -46,6 +46,12 @@ export default defineNuxtConfig({
           rel: 'stylesheet',
           href: 'https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap',
         },
+        // Favicon
+        {
+          rel: 'icon',
+          type: 'image/png',
+          href: '/tech.png'
+        }
       ],
     },
   },

@@ -882,7 +882,9 @@ const _inlineRuntimeConfig = {
     "baseURL": "/_ipx",
     "alias": {},
     "fs": {
-      "dir": []
+      "dir": [
+        "L:/Frontend/Vercel/prajaukti-pata/public"
+      ]
     },
     "http": {
       "domains": []
@@ -2295,7 +2297,7 @@ const _ayBFAmaL87dOHKQ7TbE_whBlrxFe_C3A2BOpgKuS4GY = (function(nitro) {
 
 const rootDir = "L:/Frontend/Vercel/prajaukti-pata";
 
-const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"name":"description","content":"প্রযুক্তি পাতা — বাংলাদেশের সেরা টেক রিসোর্স, টিউটোরিয়াল ও কমিউনিটি প্ল্যাটফর্ম।"}],"link":[{"rel":"preconnect","href":"https://fonts.googleapis.com"},{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap"}],"style":[],"script":[],"noscript":[],"htmlAttrs":{"lang":"bn"},"title":"প্রযুক্তি পাতা","titleTemplate":"%s | প্রযুক্তি পাতা"};
+const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"name":"description","content":"প্রযুক্তি পাতা — বাংলাদেশের সেরা টেক রিসোর্স, টিউটোরিয়াল ও কমিউনিটি প্ল্যাটফর্ম।"}],"link":[{"rel":"preconnect","href":"https://fonts.googleapis.com"},{"rel":"stylesheet","href":"https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap"},{"rel":"icon","type":"image/png","href":"/tech.png"}],"style":[],"script":[],"noscript":[],"htmlAttrs":{"lang":"bn"},"title":"প্রযুক্তি পাতা","titleTemplate":"%s | প্রযুক্তি পাতা"};
 
 const appRootTag = "div";
 
