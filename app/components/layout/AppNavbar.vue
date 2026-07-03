@@ -69,6 +69,9 @@
               <NuxtLink to="/profile/saved" class="dropdown-item" @click="dropdownOpen = false">
                 <Icon name="heroicons:bookmark" class="w-4 h-4" /> সেভ করা
               </NuxtLink>
+              <NuxtLink to="/profile/settings" class="dropdown-item" @click="dropdownOpen = false">
+                <Icon name="heroicons:cog-6-tooth" class="w-4 h-4" /> সেটিংস
+              </NuxtLink>
               <div class="border-t border-slate-100 mt-1 pt-1">
                 <button class="dropdown-item text-red-600 w-full" @click="handleSignOut">
                   <Icon name="heroicons:arrow-right-on-rectangle" class="w-4 h-4" /> সাইন আউট
