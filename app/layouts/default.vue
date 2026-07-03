@@ -21,9 +21,9 @@ import AppFooter from '~/components/layout/AppFooter.vue'
     </ClientOnly>
 
     <!-- Global UI Components -->
-    <ToastContainer />
+    <UiToastContainer />
     <AuthModal />
-    <UploadModal />
+    <AuthUploadModal />
 
   </div>
 </template>
