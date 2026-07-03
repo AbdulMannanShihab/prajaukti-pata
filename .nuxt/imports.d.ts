@@ -33,6 +33,7 @@ export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composab
 export { defineLazyHydrationComponent } from '#app/composables/lazy-hydration';
 export { useAuth } from '../app/composables/useAuth';
 export { useProfile } from '../app/composables/useProfile';
+export { useResourceCard } from '../app/composables/useResourceCard';
 export { useResources } from '../app/composables/useResources';
 export { useToast } from '../app/composables/useToast';
 export { useSupabaseClient } from '../node_modules/@nuxtjs/supabase/dist/runtime/composables/useSupabaseClient';

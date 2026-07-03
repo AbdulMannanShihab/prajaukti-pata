@@ -3,12 +3,12 @@
     <Transition name="modal">
       <div
         v-if="open"
-        class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm overflow-y-auto"
+        class="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-slate-900/70 backdrop-blur-sm"
         @click.self="close"
       >
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl my-4">
-          <!-- Header -->
-          <div class="flex items-center justify-between px-6 py-5 border-b border-slate-200">
+        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[90vh] flex flex-col">
+          <!-- Header (always visible, never scrolls away) -->
+          <div class="flex items-center justify-between px-6 py-5 border-b border-slate-200 flex-shrink-0">
             <h2 class="text-lg font-bold text-slate-800">
               {{ editId ? 'রিসোর্স সম্পাদনা' : 'নতুন রিসোর্স যোগ করুন' }}
             </h2>
@@ -17,8 +17,8 @@
             </button>
           </div>
 
-          <!-- Form -->
-          <form class="p-6 space-y-5" @submit.prevent="submit">
+          <!-- Form (scrolls internally if it's taller than the modal) -->
+          <form class="p-6 space-y-5 overflow-y-auto" @submit.prevent="submit">
             <!-- Title -->
             <div>
               <label class="label">শিরোনাম <span class="text-red-500">*</span></label>

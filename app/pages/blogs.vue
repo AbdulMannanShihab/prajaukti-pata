@@ -22,47 +22,35 @@
         </a>
       </div>
 
-      <!-- Bangla blogs -->
-      <h2 class="text-2xl font-bold text-slate-800 mb-5">বাংলা টেক ব্লগ</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mb-12">
+      <!-- Blogs (live from Supabase) -->
+      <h2 class="text-2xl font-bold text-slate-800 mb-5">টেক ব্লগ ও নিউজ</h2>
+
+      <div v-if="pending" class="text-slate-400 text-sm">লোড হচ্ছে...</div>
+
+      <div v-else-if="blogs && blogs.length" class="grid grid-cols-1 md:grid-cols-2 gap-5">
         <a
-          v-for="b in banglaBLogs"
-          :key="b.name"
-          :href="b.url"
+          v-for="r in blogs"
+          :key="r.id"
+          :href="r.url"
           target="_blank"
           rel="noopener"
           class="card p-6 flex items-start gap-4 group hover:border-brand-300 transition"
         >
           <div
             class="w-14 h-14 rounded-xl flex items-center justify-center font-black text-xl flex-shrink-0 transition"
-            :class="`${b.bg} ${b.text} group-hover:opacity-90`"
-          >{{ b.abbr }}</div>
+            :class="`${styleFor(r.title).bg} ${styleFor(r.title).text} group-hover:opacity-90`"
+          >{{ abbrFor(r.title) }}</div>
           <div class="flex-1 min-w-0">
-            <h3 class="font-bold text-slate-800 group-hover:text-brand-600 transition mb-1">{{ b.name }}</h3>
-            <p class="text-sm text-slate-500 leading-relaxed line-clamp-2">{{ b.desc }}</p>
-            <span class="text-xs font-semibold text-brand-500 mt-2 inline-block">{{ b.cta }} →</span>
+            <h3 class="font-bold text-slate-800 group-hover:text-brand-600 transition mb-1">{{ r.title }}</h3>
+            <p v-if="r.description" class="text-sm text-slate-500 leading-relaxed line-clamp-2">{{ r.description }}</p>
+            <div v-if="r.tags?.length" class="flex flex-wrap gap-1.5 mt-2">
+              <span v-for="t in r.tags" :key="t" class="tag">{{ t }}</span>
+            </div>
           </div>
         </a>
       </div>
 
-      <!-- International -->
-      <h2 class="text-2xl font-bold text-slate-800 mb-5">আন্তর্জাতিক টেক নিউজ</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
-        <a
-          v-for="n in intlNews"
-          :key="n.name"
-          :href="n.url"
-          target="_blank"
-          rel="noopener"
-          class="card p-5 flex flex-col items-center text-center group hover:border-brand-300 transition"
-        >
-          <div class="w-10 h-10 rounded-lg mb-3 flex items-center justify-center font-black text-white text-xs" :style="`background:${n.color}`">
-            {{ n.abbr }}
-          </div>
-          <p class="font-bold text-sm text-slate-800 group-hover:text-brand-600 transition">{{ n.name }}</p>
-          <p class="text-xs text-slate-400 mt-1">{{ n.tag }}</p>
-        </a>
-      </div>
+      <p v-else class="text-slate-400 text-sm">এখনো কোনো ব্লগ যোগ করা হয়নি।</p>
     </div>
   </div>
 </template>
@@ -70,19 +58,20 @@
 <script setup lang="ts">
 useSeoMeta({ title: 'ব্লগ ও নিউজ' })
 
-const banglaBLogs = [
-  { name: 'টেকটিউনস', url: 'https://www.techtunes.co', abbr: 'TT', bg: 'bg-blue-100', text: 'text-blue-700', desc: 'বাংলাদেশের বৃহত্তম টেকনোলজি কমিউনিটি ব্লগ প্ল্যাটফর্ম।', cta: 'কমিউনিটি দেখুন' },
-  { name: 'টেকসহর', url: 'https://techshohor.com', abbr: 'TS', bg: 'bg-red-100', text: 'text-red-700', desc: 'বাংলাদেশের প্রযুক্তি, স্টার্টআপ ও উদ্যোক্তা বিষয়ক সংবাদ।', cta: 'সর্বশেষ খবর' },
-  { name: 'প্রথম আলো টেক', url: 'https://www.prothomalo.com/technology', abbr: 'PA', bg: 'bg-green-100', text: 'text-green-700', desc: 'প্রথম আলোর প্রযুক্তি বিভাগ — দেশ-বিদেশের টেক সংবাদ।', cta: 'পড়ুন' },
-  { name: 'বিডি টেক নিউজ', url: 'https://bdtechnews.com', abbr: 'BD', bg: 'bg-orange-100', text: 'text-orange-700', desc: 'বাংলাদেশ ও বিশ্বের প্রযুক্তি বিষয়ক সর্বশেষ খবরাখবর।', cta: 'খবর দেখুন' },
-]
+const supabase = useSupabaseClient()
+const { styleFor, abbrFor } = useResourceCard()
 
-const intlNews = [
-  { name: 'Hacker News', url: 'https://news.ycombinator.com', color: '#ff6600', abbr: 'HN', tag: 'টেক আলোচনা' },
-  { name: 'Dev.to', url: 'https://dev.to', color: '#0a0a0a', abbr: 'DV', tag: 'ডেভেলপার ব্লগ' },
-  { name: 'CSS-Tricks', url: 'https://css-tricks.com', color: '#248aaa', abbr: 'CT', tag: 'CSS & Web' },
-  { name: 'Smashing Magazine', url: 'https://smashingmagazine.com', color: '#e9320e', abbr: 'SM', tag: 'ওয়েব ডিজাইন' },
-  { name: 'The Verge', url: 'https://theverge.com', color: '#ff3b30', abbr: 'TV', tag: 'টেক নিউজ' },
-  { name: 'TechCrunch', url: 'https://techcrunch.com', color: '#0a9d58', abbr: 'TC', tag: 'স্টার্টআপ' },
-]
+const { data: blogs, pending } = await useAsyncData('resources-blogs', async () => {
+  const { data, error } = await supabase
+    .from('resources')
+    .select('id, title, description, url, tags, thumbnail_url, created_at')
+    .eq('type', 'ব্লগ')
+    .order('created_at', { ascending: false })
+
+  if (error) {
+    console.error('resources fetch error:', error)
+    return []
+  }
+  return data
+})
 </script>
