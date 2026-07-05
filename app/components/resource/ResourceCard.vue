@@ -89,7 +89,7 @@ const toast = useToast()
 
 const meta = computed(() => TYPE_META[props.resource.type] ?? TYPE_META['অন্যান্য'])
 const dateStr = computed(() =>
-  new Date(props.resource.created_at).toLocaleDateString('bn-BD', { day: 'numeric', month: 'short', year: 'numeric' })
+  new Date(props.resource.created_at).toLocaleDateString('bn-BD', { day: 'numeric', month: 'long', year: 'numeric' })
 )
 const authorName = computed(() =>
   props.resource.profiles?.full_name || props.resource.profiles?.username || 'অজানা'
