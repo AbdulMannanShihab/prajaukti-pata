@@ -5,7 +5,7 @@
         <h1 class="text-3xl font-bold text-slate-800">সব রিসোর্স</h1>
         <p class="text-slate-500 mt-1 text-sm">{{ total }} টি রিসোর্স পাওয়া গেছে</p>
       </div>
-      <button class="btn-primary self-start md:self-auto" @click="checkAuthThenUpload">
+      <button class="btn-primary self-start md:self-auto" @click="checkAuthThenUpload" aria-label="রিসোর্স যোগ করুন">
         <Icon name="heroicons:plus" class="w-4 h-4" />
         রিসোর্স যোগ করুন
       </button>
@@ -41,7 +41,7 @@
       <span class="text-sm text-slate-500">ট্যাগ ফিল্টার:</span>
       <span class="badge bg-brand-100 text-brand-700 flex items-center gap-1">
         {{ tagFilter }}
-        <button @click="tagFilter = ''; doFetch()">×</button>
+        <button aria-label="ট্যাগ সরান" @click="tagFilter = ''; doFetch()">×</button>
       </span>
     </div>
 
@@ -62,7 +62,7 @@
 
       <!-- Load more -->
       <div v-if="resources.length && resources.length < total" class="flex justify-center mt-10">
-        <button class="btn-secondary" :disabled="loadingMore" @click="loadMore">
+        <button class="btn-secondary" :disabled="loadingMore" @click="loadMore" aria-label="আরো দেখুন">
           <span v-if="loadingMore" class="spinner" />
           <span v-else>আরো দেখুন</span>
         </button>

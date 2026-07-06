@@ -39,11 +39,11 @@ export default defineNuxtConfig({
       ],
       link: [
         {
-          rel: 'preconnect',
+          rel: 'preload',
           href: 'https://fonts.googleapis.com',
         },
         {
-          rel: 'stylesheet',
+          rel: 'preload',
           href: 'https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Noto+Serif+Bengali:wght@400;600;700&display=swap',
         },
         // Favicon

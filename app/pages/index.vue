@@ -18,7 +18,7 @@
           <NuxtLink to="/resources" class="bg-white text-brand-900 px-8 py-3.5 rounded-xl font-bold hover:bg-blue-50 transition shadow-xl">
             রিসোর্স দেখুন
           </NuxtLink>
-          <button
+          <button aria-label="রিসোর্স শেয়ার করুন"
             class="bg-white/10 text-white px-8 py-3.5 rounded-xl font-bold hover:bg-white/20 transition border border-white/20"
             @click="checkAuthThenUpload"
           >
