@@ -36,7 +36,7 @@
         <button
           v-if="isLoggedIn"
           class="btn-primary text-sm py-2 px-4 hidden md:inline-flex"
-          @click="openUploadModal"
+          @click="openUploadModal" aria-label="রিসোর্স যোগ করুন"
         >
           <Icon name="heroicons:plus" class="w-4 h-4" />
           রিসোর্স যোগ করুন
@@ -44,7 +44,7 @@
 
         <!-- Avatar dropdown (logged in) -->
         <div v-if="isLoggedIn" class="relative" ref="dropdownRef">
-          <button
+          <button aria-label="menu-icon"
             class="w-9 h-9 rounded-full bg-brand-100 text-brand-700 font-bold text-sm
                    flex items-center justify-center hover:bg-brand-200 transition"
             @click="dropdownOpen = !dropdownOpen"
@@ -73,7 +73,7 @@
                 <Icon name="heroicons:cog-6-tooth" class="w-4 h-4" /> সেটিংস
               </NuxtLink>
               <div class="border-t border-slate-100 mt-1 pt-1">
-                <button class="dropdown-item text-red-600 w-full" @click="handleSignOut">
+                <button class="dropdown-item text-red-600 w-full" @click="handleSignOut" aria-label="সাইন আউট">
                   <Icon name="heroicons:arrow-right-on-rectangle" class="w-4 h-4" /> সাইন আউট
                 </button>
               </div>
@@ -82,12 +82,12 @@
         </div>
 
         <!-- Sign in button (logged out) -->
-        <button v-else class="btn-primary text-sm py-2 px-4" @click="openAuthModal">
+        <button v-else class="btn-primary text-sm py-2 px-4" @click="openAuthModal" aria-label="সাইন ইন">
           সাইন ইন
         </button>
 
         <!-- Mobile menu toggle -->
-        <button class="md:hidden btn-ghost p-2" @click="mobileOpen = !mobileOpen">
+        <button class="md:hidden btn-ghost p-2" @click="mobileOpen = !mobileOpen" aria-label="menu">
           <Icon :name="mobileOpen ? 'heroicons:x-mark' : 'heroicons:bars-3'" class="w-5 h-5" />
         </button>
       </div>
@@ -108,10 +108,10 @@
               class="w-full pl-9 pr-4 py-2.5 rounded-xl border border-slate-200 text-sm focus:outline-none focus:border-brand-400 transition"
               @keyup.enter="goSearch" />
           </div>
-          <button v-if="isLoggedIn" class="btn-primary w-full mb-2" @click="openUploadModal; mobileOpen = false">
+          <button v-if="isLoggedIn" aria-label="রিসোর্স যোগ করুন" class="btn-primary w-full mb-2" @click="openUploadModal; mobileOpen = false">
             <Icon name="heroicons:plus" class="w-4 h-4" /> রিসোর্স যোগ করুন
           </button>
-          <button v-else class="btn-primary w-full" @click="openAuthModal; mobileOpen = false">সাইন ইন</button>
+          <button v-else aria-label="সাইন ইন" class="btn-primary w-full" @click="openAuthModal; mobileOpen = false">সাইন ইন</button>
         </div>
       </div>
     </Transition>
