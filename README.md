@@ -2,7 +2,10 @@
 
 বাংলাদেশের বাংলা ভাষাভাষী শিক্ষার্থীদের জন্য একটি ওপেন টেক রিসোর্স ডিরেক্টরি।
 
+
 🌐 **Live Demo:** https://prajaukti-pata.vercel.app/
+
+
 🌐 **Live Demo:** https://www.xn--p5b4aque7gl7ge.xn--45bl4db.xn--54b7fta0cc/
 
 
