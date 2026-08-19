@@ -17,8 +17,16 @@
             </button>
           </div>
 
+          <!-- Loading state while fetching the resource to edit -->
+          <div v-if="loadingResource" class="p-6 space-y-4 animate-pulse">
+            <div class="h-4 bg-slate-200 rounded w-1/3" />
+            <div class="h-10 bg-slate-200 rounded" />
+            <div class="h-10 bg-slate-200 rounded" />
+            <div class="h-24 bg-slate-200 rounded" />
+          </div>
+
           <!-- Form (scrolls internally if it's taller than the modal) -->
-          <form class="p-6 space-y-5 overflow-y-auto" @submit.prevent="submit">
+          <form v-else class="p-6 space-y-5 overflow-y-auto" @submit.prevent="submit">
             <!-- Title -->
             <div>
               <label class="label">শিরোনাম <span class="text-red-500">*</span></label>
@@ -106,13 +114,18 @@ import type { ResourceType } from '~/types'
 
 const open = useState('uploadModalOpen', () => false)
 const editId = useState<string | null>('editResourceId', () => null)
+// Set by the resource detail page when it already has the resource loaded,
+// so we can skip re-fetching. Falls back to a fetch if this isn't set
+// (e.g. modal opened for edit from somewhere that doesn't have it handy).
+const editData = useState<any | null>('editResourceData', () => null)
 
-const { createResource, updateResource } = useResources()
+const { createResource, updateResource, fetchResource } = useResources()
 const { isLoggedIn } = useAuth()
 const toast = useToast()
 const router = useRouter()
 
 const saving = ref(false)
+const loadingResource = ref(false)
 const error = ref('')
 const tagInput = ref('')
 const tagInputRef = ref<HTMLInputElement | null>(null)
@@ -124,6 +137,44 @@ const form = reactive({
   description: '',
   thumbnail_url: '',
   tags: [] as string[],
+})
+
+function fillFormFrom(r: any) {
+  form.title = r.title ?? ''
+  form.type = (r.type ?? '') as ResourceType | ''
+  form.url = r.url ?? ''
+  form.description = r.description ?? ''
+  form.thumbnail_url = r.thumbnail_url ?? ''
+  form.tags = Array.isArray(r.tags) ? [...r.tags] : []
+}
+
+function resetForm() {
+  Object.assign(form, { title: '', type: '', url: '', description: '', thumbnail_url: '', tags: [] })
+}
+
+// Populate (or reset) the form whenever the modal opens.
+watch(open, async (isOpen) => {
+  if (!isOpen) return
+
+  if (editId.value) {
+    if (editData.value && editData.value.id === editId.value) {
+      // Already have the resource from the caller — use it directly.
+      fillFormFrom(editData.value)
+    } else {
+      // Fallback: fetch it ourselves.
+      loadingResource.value = true
+      try {
+        const r = await fetchResource(editId.value)
+        if (r) fillFormFrom(r)
+      } catch (e) {
+        error.value = 'রিসোর্স লোড করা যায়নি।'
+      } finally {
+        loadingResource.value = false
+      }
+    }
+  } else {
+    resetForm()
+  }
 })
 
 function addTag() {
@@ -143,8 +194,9 @@ function onTagBackspace() {
 function close() {
   open.value = false
   editId.value = null
+  editData.value = null
   error.value = ''
-  Object.assign(form, { title: '', type: '', url: '', description: '', thumbnail_url: '', tags: [] })
+  resetForm()
 }
 
 async function submit() {
