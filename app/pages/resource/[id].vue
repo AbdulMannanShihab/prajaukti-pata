@@ -41,18 +41,7 @@
         <div class="flex items-center justify-between flex-wrap gap-3 pt-4 border-t border-slate-100">
           <!-- Author -->
           <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-full bg-brand-100 text-brand-700 font-bold flex items-center justify-center">
-              {{ authorInitial }}
-            </div>
-            <div>
-              <p class="font-semibold text-sm text-slate-700">{{ authorName }}</p>
-              <p class="text-xs text-slate-400">লেখক</p>
-            </div>
-          </div>
-
-          <!-- Buttons -->
-          <div class="flex items-center gap-2">
-            <button
+             <button
               :class="['btn-secondary text-sm gap-2', liked ? '!text-red-500 !border-red-200' : '']"
               @click="handleLike"
             >
@@ -66,6 +55,11 @@
               <Icon :name="saved ? 'heroicons:bookmark-solid' : 'heroicons:bookmark'" class="w-4 h-4" />
               {{ saved ? 'সেভ করা' : 'সেভ করুন' }}
             </button>
+          </div>
+
+          <!-- Buttons -->
+          <div class="flex items-center gap-2">
+           
             <a :href="resource.url" target="_blank" rel="noopener noreferrer" class="btn-primary text-sm gap-2">
               রিসোর্স খুলুন <Icon name="heroicons:arrow-top-right-on-square" class="w-4 h-4" />
             </a>

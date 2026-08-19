@@ -5,14 +5,13 @@
       <div class="max-w-4xl mx-auto">
         <p class="inline-flex items-center gap-2 bg-white/10 px-4 py-1.5 rounded-full text-sm font-semibold mb-6">
           <Icon name="heroicons:sparkles" class="w-4 h-4 text-yellow-300" />
-          বাংলাদেশের সেরা টেক লার্নিং প্ল্যাটফর্ম
+          বাংলাদেশের সেরা টেক রিসোর্স হাব
         </p>
         <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight font-bangla-serif">
-          দক্ষতা অর্জন করুন <br class="hidden md:block" />
-          <span class="text-brand-300">মাতৃভাষায়</span>
+          রিসোর্স খুঁজুন
         </h1>
         <p class="text-lg md:text-xl text-blue-100 mb-10 max-w-2xl mx-auto leading-relaxed">
-          সেরা মেন্টর, লার্নিং প্ল্যাটফর্ম, ইউটিউব চ্যানেল এবং কমিউনিটি রিসোর্সের পূর্ণাঙ্গ ডিরেক্টরি।
+          ব্লগ, টিউটোরিয়াল, ইউটিউব চ্যানেল ও কমিউনিটি রিসোর্স
         </p>
         <div class="flex flex-wrap justify-center gap-4">
           <NuxtLink to="/resources" class="bg-white text-brand-900 px-8 py-3.5 rounded-xl font-bold hover:bg-blue-50 transition shadow-xl">
@@ -25,16 +24,9 @@
             রিসোর্স শেয়ার করুন
           </button>
         </div>
-        <!-- Stats -->
-        <div class="flex flex-wrap justify-center gap-8 mt-14 text-sm">
-          <div v-for="stat in stats" :key="stat.label" class="text-center">
-            <p class="text-2xl font-bold text-white">{{ stat.value }}</p>
-            <p class="text-blue-200 mt-0.5">{{ stat.label }}</p>
-          </div>
-        </div>
       </div>
     </section>
-    
+    <!--end Hero -->
   </div>
 </template>
 

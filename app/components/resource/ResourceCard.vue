@@ -39,14 +39,6 @@
     <div class="mt-auto flex items-center justify-between pt-3 border-t border-slate-100">
       <!-- Author -->
       <div class="flex items-center gap-2 text-xs text-slate-500 min-w-0">
-        <div class="w-6 h-6 rounded-full bg-brand-100 text-brand-600 font-bold text-[10px] flex items-center justify-center flex-shrink-0">
-          {{ authorInitial }}
-        </div>
-        <span class="truncate">{{ authorName }}</span>
-      </div>
-
-      <!-- Actions -->
-      <div class="flex items-center gap-3">
         <button
           class="flex items-center gap-1 text-xs font-semibold transition"
           :class="liked ? 'text-red-500' : 'text-slate-400 hover:text-red-400'"
@@ -62,6 +54,10 @@
         >
           <Icon :name="saved ? 'heroicons:bookmark-solid' : 'heroicons:bookmark'" class="w-4 h-4" />
         </button>
+      </div>
+
+      <!-- Actions -->
+      <div class="flex items-center gap-3">
         <a
           :href="resource.url"
           target="_blank"
