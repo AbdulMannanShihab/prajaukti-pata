@@ -102,13 +102,17 @@ async function doFetch(reset = true) {
   try {
     let query = supabase
       .from('resources')
-      .select(`*, profiles:user_id(id, username, full_name, avatar_url), likes_count:likes(count), saves_count:saves(count)`, { count: 'exact' })
+      .select(`*, profiles:user_id(id, username, full_name, avatar_url), saves_count:saves(count)`, { count: 'exact' })
       .range(offset.value, offset.value + PAGE - 1)
 
     if (typeFilter.value) query = query.eq('type', typeFilter.value)
     if (search.value) query = query.ilike('title', `%${search.value}%`)
     if (tagFilter.value) query = query.contains('tags', [tagFilter.value])
-    if (sort.value === 'new') query = query.order('created_at', { ascending: false })
+
+    // 'likes_count' এখন resources টেবিলের নিজস্ব denormalized column (trigger দিয়ে সিঙ্ক করা),
+    // তাই সরাসরি order() করা যায় — embedded aggregate এ order করা যেত না
+    if (sort.value === 'liked') query = query.order('likes_count', { ascending: false })
+    else query = query.order('created_at', { ascending: false })
 
     const { data, count } = await query
     if (reset) resources.value = (data ?? []) as Resource[]
